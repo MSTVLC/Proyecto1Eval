@@ -38,7 +38,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         return;
     }
 
-    fetch("http://localhost/web/controladores/validar.php", {
+    fetch("http://localhost/Proyecto1Eval/controladores/validar.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",

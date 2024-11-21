@@ -56,7 +56,7 @@ document.getElementById("registerForm").addEventListener("submit", function(even
     }
 
     // Send data to the server
-    fetch("http://localhost/web/servicio_cliente/cliente_api.php", {
+    fetch("http://localhost/Proyecto1Eval/servicio_cliente/cliente_api.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
