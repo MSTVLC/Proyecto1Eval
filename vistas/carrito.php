@@ -1,5 +1,6 @@
 <?php
 include "header.html";
+
 ?>
 
 <body>
@@ -8,12 +9,13 @@ include "header.html";
         <div id="cart-items" class="row"></div>
         <div id="cart-total" class="text-right mt-3"></div>
         <div class="text-right mt-3">
-            <a href="../servicio_producto/detalle_producto.html">
+            <a href="../servicio_producto/detalle_producto.php">
                 <button class="btn btn-danger">Seguir Comprando</button></a>
             <button class="btn btn-danger" onclick="emptyCart()">
                 Vaciar Carrito
             </button>
             <button class="btn btn-primary" onclick="checkout()">Pagar</button>
+            <!--  <button class="btn btn-primary mt-2" onclick="updateCart()">Actualizar</button> -->
         </div>
     </div>
 
@@ -52,6 +54,7 @@ include "header.html";
                         <button class="btn btn-outline-secondary" onclick="changeQuantity(${item.idCarrito}, 1)">+</button>
                       </div>
                       <button class="btn btn-danger mt-2" onclick="removeFromCart(${item.idCarrito})">Eliminar</button>
+                      
                     </div>
                   </div>
                 </div>`;
@@ -117,10 +120,66 @@ include "header.html";
     }
 
     function checkout() {
-        // Redirect to checkout page or handle checkout logic
-        alert("Proceed to checkout");
+        window.location.href = "../controladores/confirmar.php";
+
     }
+
+
+    /*   function updateCart(productId) {
+          fetch(
+                  `http://localhost/Proyecto1Eval/servicio_carrito/controlador/cart_api.php?idProducto=${productId}`
+              )
+              .then((response) => {
+                  if (!response.ok) {
+                      throw new Error("Network response was not ok");
+                  }
+                  return response.json();
+              })
+              .then((cartItems) => {
+                  if (Array.isArray(cartItems) && cartItems.length > 0) {
+                      // Product is already in the cart, update the quantity
+                      const cartItem = cartItems[0];
+                      const newQuantity = parseInt(cartItem.cantidad) + 1;
+
+                      fetch("http://localhost/Proyecto1Eval/servicio_carrito/controlador/cart_api.php", {
+                              method: "PUT",
+                              headers: {
+                                  "Content-Type": "application/x-www-form-urlencoded",
+                              },
+                              body: `idCarrito=${cartItem.idCarrito}&cantidad=${newQuantity}`,
+                          })
+                          .then((response) => {
+                              if (!response.ok) {
+                                  throw new Error("Network response was not ok");
+                              }
+                              return response.json();
+                          })
+                          .then((response) => {
+                              if (response.status === "success") {
+                                  window.location.href = `carrito.php`;
+                              } else {
+                                  throw new Error(response.message);
+                              }
+                          })
+                          .catch((error) => {
+                              console.error(
+                                  "Error updating product quantity in cart:",
+                                  error
+                              );
+                              alert(
+                                  "Error actualizando la cantidad del producto en el carrito"
+                              );
+                          });
+                  } 
+              })
+              .catch((error) => {
+                  console.error("Error fetching cart items:", error);
+                  alert("Error al obtener los productos del carrito");
+              });
+      } */
     </script>
+
+    <!-- <a href="../controladores/vercarrito.php" class="btn btn-primary">Actualizar</a> -->
 
 
 
