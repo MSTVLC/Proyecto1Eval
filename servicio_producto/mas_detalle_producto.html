@@ -25,7 +25,7 @@
         const idProducto = urlParams.get("idProducto");
         if (idProducto) {
           fetch(
-            `http://localhost/web/servicio_producto/productos_api.php?idProducto=${idProducto}`
+            `http://localhost/Proyecto1Eval/servicio_producto/productos_api.php?idProducto=${idProducto}`
           )
             .then((response) => response.json())
             .then((product) => {
@@ -56,7 +56,7 @@
 
       function addToCart(productId) {
         fetch(
-          `http://localhost/web/servicio_producto/cart_api.php?idProducto=${productId}`
+          `http://localhost/Proyecto1Eval/servicio_carrito/controlador/cart_api.php?idProducto=${productId}`
         )
           .then((response) => {
             if (!response.ok) {
@@ -70,7 +70,7 @@
               const cartItem = cartItems[0];
               const newQuantity = parseInt(cartItem.cantidad) + 1;
 
-              fetch("http://localhost/web/servicio_producto/cart_api.php", {
+              fetch("http://localhost/Proyecto1Eval/servicio_carrito/controlador/cart_api.php", {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",
@@ -85,7 +85,7 @@
                 })
                 .then((response) => {
                   if (response.status === "success") {
-                    window.location.href = `carrito.html`;
+                    window.location.href = `../vistas/carrito.php`;
                   } else {
                     throw new Error(response.message);
                   }
@@ -101,7 +101,7 @@
                 });
             } else {
               // Product is not in the cart, add as a new entry
-              fetch("http://localhost/web/servicio_producto/cart_api.php", {
+              fetch("http://localhost/Proyecto1Eval/servicio_carrito/controlador/cart_api.php", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",
@@ -116,7 +116,7 @@
                 })
                 .then((response) => {
                   if (response.status === "success") {
-                    window.location.href = `carrito.html`;
+                    window.location.href = `../vistas/carrito.php`;
                   } else {
                     throw new Error(response.message);
                   }

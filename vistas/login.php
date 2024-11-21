@@ -48,7 +48,8 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
         .then(response => response.json())
         .then(data => {
             if (data.status === "success") {
-                window.location.href = "../controladores/vercarrito.php";
+                /*  window.location.href = "../controladores/vercarrito.php"; */
+                window.location.href = "carrito.php";
             } else {
                 loginErrors.innerHTML = data.message;
             }

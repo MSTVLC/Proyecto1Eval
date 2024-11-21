@@ -23,11 +23,11 @@ echo "http://localhost/web/servidor/api_producto/productos_api.php";
       <div class="row" id="products-row"></div>
     </div>
     <div id="product-details" class="product-details"></div>
-    <script src="app.js"></script>
+    
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        fetch("http://localhost/web/servicio_producto/productos_api.php")
+        fetch("http://localhost/Proyecto1Eval/servicio_producto/productos_api.php")
           .then((response) => response.json())
           .then((data) => {
             const productsRow = document.getElementById("products-row");
